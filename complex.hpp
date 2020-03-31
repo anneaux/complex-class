@@ -1,19 +1,24 @@
 #pragma once
 namespace anx {
+
+template <typename Real>
 struct complex {
-  float real;
-  float imag;
+  Real real;
+  Real imag;
 };
 
-inline std::ostream& operator<<(std::ostream& os, complex z) {
+template <typename Real>
+inline std::ostream& operator<<(std::ostream& os, complex<Real> z) {
   return os << z.real << " + " << z.imag << "i";
 }
 
-inline complex operator+(complex z1, complex z2) noexcept {
+template <typename Real>
+inline complex<Real> operator+(complex<Real> z1, complex<Real> z2) noexcept {
   return {z1.real + z2.real, z1.imag + z2.imag};
 }
 
-inline complex operator*(complex z1, complex z2) noexcept {
+template <typename Real>
+inline complex<Real> operator*(complex<Real> z1, complex<Real> z2) noexcept {
   return {z1.real * z2.real - z1.imag * z2.imag,
           z1.real * z2.imag + z1.imag * z2.real};
 }
